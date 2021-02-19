@@ -10,14 +10,24 @@
         <input type="text" class="form-control" id="tittle" name="tittle">
     </div>
 
-    <div class="mb-3">
-        <label for="summary" class="form-label">Resumen</label>
-        <textarea name= "summary" id="summary" class="form-control" cols="30" rows="5"> </textarea>
+    <div class="form-group has-feedback">
+        <label class="form-label">Categoria</label>
+        <select name="categoria_id" class="form-select" required>
+            <option value="">Seleccionar Categoria</option>
+            @foreach ($categorias as $categoria)
+            <option value="{{$categoria->id}}">{{$categoria->name}}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="mb-3">
-        <label for="image" class="form-label"> Imagen </label>
+        <label for="image" class="form-label" !Required> Imagen </label>
         <input type="file" class="form-control" id="image" name="image">
+    </div>
+
+    <div class="mb-3">
+        <label for="summary" class="form-label"> Resumen </label>
+        <input type="text" class="form-control" id="summary" name="summary">
     </div>
 
     <div class="mb-3">

@@ -37,6 +37,7 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td scope="row"> {{ $post-> id }} </td>
+                        {{-- <td scope="row"> {{ $post-> categoria-> name }} </td> --}}
                         <td> {{ $post-> tittle }} </td>
                         <td> {{ $post-> summary }} </td>
                         <td scope="row"> <img src="{{asset('storage').'/.$post->image'}}" </td>
