@@ -43,13 +43,14 @@
                         <td> {{ $post-> description }} </td>
                         <td> {{ $post-> otra }} </td>
                         <td>
-                            <a href="{{ route ('post.edit', $post->id) }}" class="btn btn-danger">EDITAR</a>
+                            <a href="{{ route ('post.edit', $post->id) }}" class="btn btn-primary">EDITAR</a>
 
 
+                            <button type="submit" class="btn btn-danger" oneclick= return "confirm ( 'Desea elmiar el resgistro?')">ELIMINAR</button>
                             <form action="{{route("post.destroy" , $post->id)}}" method="post">
                             {{ csrf_field() }} {{--metodo de seguridad--}}
                             {{ @method_field("DELETE")}}
-                            <button type="submit" class="btn btn-danger" oneclick= return "confirm ( 'Desea elmiar el resgistro?')">Eliminar</button>
+
                             </form>
                         </td>
                     </tr>
