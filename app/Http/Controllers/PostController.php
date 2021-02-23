@@ -38,7 +38,7 @@ class PostController extends Controller
     {
         $categorias = Categoria::all();
         return view("post.create")->with(["categorias" => $categorias]);
-        Session::flash('alert-Concluido', 'Se ha creado el registro con exitoi');
+
     }
 
 
@@ -51,6 +51,7 @@ class PostController extends Controller
         }
         Post::insert($data);
         return redirect() -> route("post.index");
+        Session::flash('alert-Concluido', 'Se ha creado el registro con exitoi');
     }
 
 
