@@ -15,6 +15,14 @@ class CategoriaController extends Controller
         return view("categoria.index" , $categoria);
     }
 
+    public function list()
+    {
+        $data = Categoria::all();
+        return response()->json($data,202);
+    }
+
+
+
 
     public function create()
     {
@@ -30,6 +38,15 @@ class CategoriaController extends Controller
         Categoria::insert($categoria);
         return redirect() -> route("categoria.index");
         Session::flash('alert-Concluido', 'Se ha creado el registro con exitoi');
+    }
+
+    public function save(Request $request)
+    {
+        $categoria = new Categoria;
+        $categoria->name = $request->name;
+        $categoria->description = $request->description;
+        $categoria->save();
+        return response()->json("La info se guardo con exito",201);
     }
 
 
