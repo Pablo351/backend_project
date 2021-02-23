@@ -20,7 +20,7 @@ class CategoriaController extends Controller
     {
         $categorias = Categoria::all();
         return view("categoria.create")->with(["categorias" => $categorias]);
-       // Session::flash('alert-Concluido', 'Se ha creado el registro con exitoi');
+        Session::flash('alert-Concluido', 'Se ha creado el registro con exitoi');
     }
 
 
@@ -29,6 +29,7 @@ class CategoriaController extends Controller
         $categoria = $request->except('_token');
         Categoria::insert($categoria);
         return redirect() -> route("categoria.index");
+        Session::flash('alert-Concluido', 'Se ha creado el registro con exitoi');
     }
 
 
@@ -53,6 +54,7 @@ class CategoriaController extends Controller
     {
         $data = Categoria::findOrFail($id);
         return view("categoria.edit")->with(["categoria" => $data]);
+        Session::flash('alert-Concluido', 'Se ha EDITADO el registro con exitoi');
     }
 
 
@@ -61,6 +63,7 @@ class CategoriaController extends Controller
         $data = $request -> except('_token','_method');
         Categoria::where('id','=', $id)->update($data);
         return redirect()->route("categoria.index");
+        Session::flash('alert-Concluido', 'Se ha EDITADO el registro con exitoi');
     }
 
 
