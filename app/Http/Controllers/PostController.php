@@ -63,31 +63,30 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        $data = Post::find($id);
+        $data = Post::findOrFail($id);
         return view("post.edit")->with(["post" => $data]);
     }
 
 
     public function update(Request $request, $id)
     {
-        //$data = $request -> all();
         $data = $request -> except('_token','_method');
 
         if ($request-> hasFile('image')) {
-            $post = Post::find($id);
+            $post = Post::findOrFail($id);
             Storage::delete(['public/$post->image']);
             $data['image'] = $request -> file('image') -> store('uploads', 'public');
         }
 
-        Post::where('id','=','$id')->update($data);
-        return redirect() -> route("post.index");
+        Post::where('id','=', $id)->update($data);
+        return redirect()->route("post.index");
     }
 
 
     public function destroy($id)
     {
         Post::destroy($id);
-        return redirect() -> route("post.index");
+        return redirect()->route("post.index");
         Session::flash('alert-Concluido', 'Se ha eliminado el registro con exitoi');
     }
 }

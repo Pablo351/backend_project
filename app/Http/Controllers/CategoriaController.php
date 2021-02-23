@@ -32,6 +32,17 @@ class CategoriaController extends Controller
     }
 
 
+    public function search(Request $request)
+    {
+        $data = $request->input('search');
+        $query = Categoria::select()
+            ->where('name','like',"%$data%")
+            ->orwhere('description','like',"%$data%")
+            ->get();
+
+        return view("categoria.index")->with(["categoria" => $query]);
+    }
+
     public function show(Categoria $categoria)
     {
         //
