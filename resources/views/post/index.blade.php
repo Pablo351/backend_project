@@ -40,17 +40,19 @@
                         {{-- <td scope="row"> {{ $post-> categoria-> name }} </td> --}}
                         <td> {{ $post-> tittle }} </td>
                         <td> {{ $post-> summary }} </td>
-                        <td scope="row"> <img src="{{asset('storage').'/.$post->image'}}" </td>
+                        <td scope="row"> <img src="{{asset('storage').'/.$post->image'}}"> </td>
                         <td> {{ $post-> description }} </td>
                         <td> {{ $post-> otra }} </td>
                         <td>
-                            <a href="{{ route ('post.edit', $post->id) }}" class="btn btn-primary">EDITAR</a>
+                            <a href="{{ route ('post.edit', $post->id) }}" class="btn btn-sm btn-primary">EDITAR</a>
 
 
-                            <button type="submit" class="btn btn-danger" oneclick= return "confirm ( 'Desea elmiar el resgistro?')">ELIMINAR</button>
+
                             <form action="{{route("post.destroy" , $post->id)}}" method="post">
-                            {{ csrf_field() }} {{--metodo de seguridad--}}
-                            {{ @method_field("DELETE")}}
+                                {{ csrf_field() }} {{--metodo de seguridad--}}
+                                {{ method_field("DELETE")}}
+                                <button type="submit" class="btn btn-sm btn-danger" onclick= "return confirm ('¿Desea eliminar el resgistro?')">ELIMINAR</button>
+
 
                             </form>
                         </td>
