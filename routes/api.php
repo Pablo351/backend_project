@@ -24,3 +24,9 @@ Route::group(['prefix'=>'categoria'], function () {
     Route::post('create', 'CategoriaController@save');
 
 });
+
+Route::group(['prefix'=>'contact'], function () {
+    Route::get('list', 'ContactController@list');
+    Route::post('create', 'ContactController@save');
+
+});
